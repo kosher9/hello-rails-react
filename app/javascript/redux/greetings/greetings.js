@@ -21,7 +21,7 @@ export function setGreeting(message) {
 }
 
 export const getGreeting = () => async (dispatch) => {
-    const message = await fetch(`${BASE_URL}/${GREETING_ENDPOINT}`).then((response) => response.json())
+    const message = await fetch(`${BASE_URL}${GREETING_ENDPOINT}`).then((response) => response.json())
     console.log(message)
     dispatch(setGreeting(message))
 }
