@@ -1,34 +1,21 @@
-import React from "react"
-import PropTypes from "prop-types"
-import {createStructuredSelector} from "reselect";
+import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getGreeting} from "../redux/greetings/greetings";
 
-const GET_THINGS_REQUEST = 'GET_THINGS_REQUEST'
 
-function getThings() {
-  console.log('getThings action!!')
-  return {
-    type: GET_THINGS_REQUEST
-  }
-}
+export default function HelloWorld() {
+    const helloMessage = useSelector((state) => state.greeting)
+    const dispatch = useDispatch();
 
-class HelloWorld extends React.Component {
-  render () {
+    const greeting = () => {
+        console.log('Love')
+        dispatch(getGreeting())
+    }
     return (
-      <React.Fragment>
-        Greeting: {this.props.greeting}
-        <button className="getThingsBtn" onClick={() => getThings()}>get things</button>
-      </React.Fragment>
+        <React.Fragment>
+            <p>Hello {helloMessage}</p>
+            <button className="getThingsBtn" onClick={greeting}>Say Hello
+            </button>
+        </React.Fragment>
     );
-  }
 }
-
-const structuredSelector = createStructuredSelector({
-  things: state => state.things()
-})
-
-const mapDispatchToProps = { getThings }
-
-HelloWorld.propTypes = {
-  greeting: PropTypes.string
-};
-export default HelloWorld

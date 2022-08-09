@@ -3,9 +3,7 @@ import PropTypes from "prop-types"
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import { Provider } from "react-redux";
 import HelloWorld from "./HelloWorld";
-import configureStore from "../configureStore";
-
-const store = configureStore()
+import store from "../configureStore";
 
 class App extends React.Component {
     render() {
@@ -15,7 +13,7 @@ class App extends React.Component {
                     <Routes>
                         <Route exact path="/" element={"Home"}/>
 
-                        <Route path="/hello" element={<HelloWorld greeting="Ced"/>}/>
+                        <Route path="/hello" element={<HelloWorld greeting={"Life"}/>}/>
                     </Routes>
                 </BrowserRouter>
             </Provider>
